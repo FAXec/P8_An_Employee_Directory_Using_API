@@ -7,6 +7,7 @@ const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
 const modal = document.querySelector(".modal")
+const cardDetail = document.querySelector(".card");
 
 
 
@@ -66,11 +67,10 @@ function displayModal(index) {
     }
 
 
-    gridContainer.addEventListener('click', e => {
+gridContainer.addEventListener('click', e => {
         // make sure the click is not on the gridContainer itself
         if (e.target !== gridContainer) {
-        // select the card element based on its proximity to actual element
-        clicked
+        // select the card element based on its proximity to actual element clicked
         const card = e.target.closest(".card");
         const index = card.getAttribute('data-index');
         displayModal(index);
@@ -78,13 +78,23 @@ function displayModal(index) {
         });
 
         
-    modalClose.addEventListener('click', () => {
+modalClose.addEventListener('click', () => {
         overlay.classList.add("hidden");
         });
 
 
 
-        // <-----Model behaviour & resource: https://www.w3schools.com/howto/howto_css_modals.asp ----->>
+
+cardDetail.addEventListener("click", ()=>{
+    modal.classList.add("show");
+});
+
+cardDetail.addEventListener("click", ()=>{
+    modal.classList.remove("show");
+});
+
+
+        // <-----Model behaviour - resource: https://www.w3schools.com/howto/howto_css_modals.asp ----->>
 
 // When the user clicks on <button> (x), close the modal
 modalClose.onclick = function() {    
