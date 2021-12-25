@@ -1,7 +1,7 @@
 // global variables
 let employees = [];
-const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture,
-email, location, phone, dob &noinfo &nat=US`;
+const urlAPI = `https://randomuser.me/api/?results=12&inc=name,picture,
+email,location,phone,dob&noinfo&nat=US`;
 const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
@@ -11,7 +11,7 @@ const modalClose = document.querySelector(".modal-close");
 // fetch data from API
 fetch(urlAPI)
 .then(res => res.json())
-.then(res => console.log(res.results))
+.then(res => res.results)
 .then(displayEmployees)
 .catch(err => console.log(err))
 
@@ -44,8 +44,7 @@ function displayEmployees(employeeData) {
 
 function displayModal(index) {
     // use object destructuring make our template literal cleaner
-    let { name, dob, phone, email, location: { city, street, state, postcode
-    }, picture } = employees[index];
+    let { name, dob, phone, email, location: { city, street, state, postcode}, picture } = employees[index];
     let date = new Date(dob.date);
     const modalHTML = `
     <img class="avatar" src="${picture.large}" />
