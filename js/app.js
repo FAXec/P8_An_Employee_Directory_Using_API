@@ -6,7 +6,6 @@ const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
-const modal = document.querySelector(".modal")
 const cardDetail = document.querySelector(".card");
 
 
@@ -63,7 +62,7 @@ function displayModal(index) {
     </div>
     `;
     overlay.classList.remove("hidden");
-    modalContainer.innerHTML = modalHTML;
+    modalContainer.innerHTML = modalHTML;    
     }
 
 
@@ -83,27 +82,11 @@ modalClose.addEventListener('click', () => {
         });
 
 
-
-
-cardDetail.addEventListener("click", ()=>{
-    modal.classList.add("show");
-});
-
-cardDetail.addEventListener("click", ()=>{
-    modal.classList.remove("show");
-});
-
-
         // <-----Model behaviour - resource: https://www.w3schools.com/howto/howto_css_modals.asp ----->>
-
-// When the user clicks on <button> (x), close the modal
-modalClose.onclick = function() {    
-    modal.style.display = "none";
-}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target != modal) {
-    modal.style.display = "none";
+  if (event.target === overlay) {
+    overlay.classList.add("hidden");
   }
 }
